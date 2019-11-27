@@ -1,0 +1,14 @@
+---
+- name: create user
+  hosts: jenkins-slave
+  remote_user: naser
+  become: yes
+  tasks:
+    - name: create new user
+      user:
+        name: test1
+        groups: 
+          - sudo
+          - docker
+        append: yes
+        password: '$6$N94Prqi0S$GRUfbNatKFgaBpZzKgOp9z6f2mzExoaXd2IK8VcoeArrlPoFY1M8KQcIZTKWujWLKnRPqHDRmJfFW0b4H1b/u.'
