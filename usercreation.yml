@@ -6,9 +6,15 @@
   tasks:
     - name: create new user
       user:
-        name: test1
+        name: test3
+        shell: /bin/bash
         groups: 
           - sudo
           - docker
         append: yes
         password: '$6$N94Prqi0S$GRUfbNatKFgaBpZzKgOp9z6f2mzExoaXd2IK8VcoeArrlPoFY1M8KQcIZTKWujWLKnRPqHDRmJfFW0b4H1b/u.'
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: test3
+        state: present
+        key: "{{ lookup('file'), '/home/naser/.ssh/id_rsa.pub' }}"  
